@@ -84,18 +84,43 @@ router.post('/login', (req, res) => {
         })
 })
 
-// $router      GET     api/users/current
+// $router      GET     api/users/:id
 // @desc        通过 token 获取用户数据
 // @access      private
-router.get('/current', (req, res) => {
+router.get('/:id', (req,res) => {
     jwt.verify(req.headers.token, Secret, (err, data) => {
         if(err) {
             console.log(err)
             res.status(401).json({msg: 'token 验证失败'})
         }else{
-            res.json(data)
+            User.findById(req.params.id)
+                .then(user => {
+                    if(user){
+                        res.json(user)
+                    }else{
+                        res.status(400).json({msg: "没有查询到数据"})
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.status(400).json({msg: "查询数据库失败"})
+                })
         }
     })
 })
+
+// $router      GET     api/users/current
+// @desc        通过 token 获取用户数据
+// @access      private
+// router.get('/current', (req, res) => {
+//     jwt.verify(req.headers.token, Secret, (err, data) => {
+//         if(err) {
+//             console.log(err)
+//             res.status(401).json({msg: 'token 验证失败'})
+//         }else{
+//             res.json(data)
+//         }
+//     })
+// })
 
 module.exports = router
