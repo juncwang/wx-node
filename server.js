@@ -4,8 +4,9 @@ const app = express()
 
 // 使用 body 解析器, 用于解析 body
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false}))
-app.use(bodyParser.json())
+// 最大传多大的文件 limit:'100mb'
+app.use(bodyParser.urlencoded({ limit:'100mb',extended: false}))
+app.use(bodyParser.json({limit:'100mb'}))
 
 // 链接 mongoDB 数据库
 const MongoURI = require('./config/keys').MongoURI

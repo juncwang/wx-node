@@ -79,6 +79,7 @@ router.get('/latest', (req, res) => {
 // @access      private
 // 下拉刷新(请求)3条 上拉加载(请求)3条
 router.get('/:page/:size', (req, res) => {
+    console.log("pullup")
     jwt.verify(req.headers.token, Secret, (err, data) => {
         if (err) {
             console.log(err)
