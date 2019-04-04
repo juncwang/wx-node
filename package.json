@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "body-parser": "^1.18.3",
+    "connect-multiparty": "^2.2.0",
     "express": "^4.16.4",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",

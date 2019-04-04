@@ -10,8 +10,8 @@ const Secret = require('../../config/keys').Secret
 // $router      GET     api/moments/test
 // @desc        返回 moments 测试接口
 // @access      public
-router.get('/test', (req, res) => {
-    res.json({ mse: 'moments interface success' })
+router.post('/test', (req, res) => {
+    res.json({ msg: 'moments interface success' })
 })
 
 // $router      POST     api/moments/add
@@ -109,5 +109,6 @@ router.get('/:page/:size', (req, res) => {
         }
     })
 })
+
 
 module.exports = router

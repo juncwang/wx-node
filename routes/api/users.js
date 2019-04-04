@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
 // $router      GET     api/users/:id
 // @desc        通过 token 获取用户数据
 // @access      private
-router.get('/:id', (req,res) => {
+router.get('/getUserById/:id', (req,res) => {
     jwt.verify(req.headers.token, Secret, (err, data) => {
         if(err) {
             console.log(err)
